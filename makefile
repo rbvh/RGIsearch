@@ -5,13 +5,15 @@ FLAGS = -std=c++0x
 vpath %.cpp src
 vpath %.h src
 
-execFile: $(addprefix bin/, $(OBJS))
+RGIsearch: $(addprefix bin/, $(OBJS))
 	@echo Linking
 	@$(CC) $(FLAGS) $^ -o $@ 
 
 bin/%.o : %.cpp
+	@mkdir -p bin
 	@echo Building $@
 	@${CC} ${FLAGS} -c -o $@ $<
+
 
 bin/common.o: common.cpp common.h symbolics.h
 bin/symbolics.o: symbolics.cpp symbolics.h common.h
@@ -26,5 +28,6 @@ bin/invariants.o: invariants.cpp common.h symbolics.h containers.h settings.h
 bin/equations.o: equations.cpp invariants.h common.h symbolics.h containers.h combinatorics.h matrix.h quadratic.h dimensions.h filtering.h 
 
 clean: 
-	@-rm -f bin/*.o  
-	@-rm -f execFile
+	@-rm -f bin/*.o 
+	@-rmdir bin 
+	@-rm -f RGIsearch

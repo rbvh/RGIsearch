@@ -8,12 +8,20 @@ The results of the application of this code to the renormalization group equatio
 RGIsearch currently implements the beta-functions of the SM and the MSSM, but any set of beta-functions can be implemented. 
 
 #Compilation
-The program comes precompiled. To produce an executable, just do
-```make```
+For first-time compilation, running 
+
+``` make ```
+
+will generate all binary files and link them to an executable. This can then be run with
+
+```./RGIsearch```.
 
 If any Beta-functions, settings or any of the sources are changed, ```make``` should update the binaries. If for some reason it does not, or it is otherwise required, one can do
-```make clean```
-```make```
+
+```
+make clean
+make
+```
 
 #Program Settings
 The program settings can be found in `settings.h`.
@@ -43,6 +51,8 @@ The code does not support factorization for two-loop level searches.
 Set to true to make the program report its current activities.
 
 #Beta-Functions
+The beta-fcuntions can be found in `equations.cpp`.
+
 To define the beta-functions of a theory, the physical parameters of the theory first need to be defined. This is done with:
 
 ```Param newPar("parName", parSize);```

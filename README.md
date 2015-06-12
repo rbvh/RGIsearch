@@ -8,12 +8,24 @@ The results of the application of this code to the renormalization group equatio
 RGIsearch currently implements the beta-functions of the SM and the MSSM, but any set of beta-functions can be implemented. 
 
 #Compilation
-The program comes precompiled. To produce an executable, just do
-```make```
+For first-time compilation, running 
+
+``` 
+make
+```
+
+will generate all binary files and link them to an executable. This can then be run with
+
+``` 
+./RGIsearch 
+```
 
 If any Beta-functions, settings or any of the sources are changed, ```make``` should update the binaries. If for some reason it does not, or it is otherwise required, one can do
-```make clean```
-```make```
+
+```
+make clean
+make
+```
 
 #Program Settings
 The program settings can be found in `settings.h`.
@@ -47,18 +59,22 @@ The beta-fcuntions can be found in `equations.cpp`.
 
 To define the beta-functions of a theory, the physical parameters of the theory first need to be defined. This is done with:
 
-```Param newPar("parName", parSize);```
+```
+Param newPar("parName", parSize);
+```
 
 ParSize is the size of the parameter (single number, 2x2 matrix, 3x3 matrix etc..).
 
-If a parameter is complex, its daggered counterpart must be defined. This is done as:
+If a parameter is complex, its daggered counterpart must be defined. This is done with:
 
-```Param newParDagger = dagger(newPar);```
+```
+Param newParDagger = dagger(newPar);
+```
 
 Several methods are included in the Param class to allow for simplifications such as those required for going from the MSSM to the pMSSM. They include:
-`botRight()` Makes everything except for the bottom right component equal to zero
-`diag()` Makes all offdiagonal terms equal to zero
-`botRightDiag()` Makes all offdiagonal terms equal to zero, and the all components except for the bottom right degenerate
+1. `botRight()` Makes everything except for the bottom right component equal to zero.
+2. `diag()` Makes all offdiagonal terms equal to zero.
+3. `botRightDiag()` Makes all offdiagonal terms equal to zero, and the all components except for the bottom right degenerate.
 
 
 After defining the physical parameters of the theory, one can define its beta-functions. These are stored as a vector of the objects BetaFunc (`vector<BetaFunc> nameOfBetaFuncs`). 
@@ -66,17 +82,21 @@ The beta-function of a parameter can then be defined as:
 
 ```
 BetaFunc bNewPar(newPar);
-bNewPar = 'polynomial' 
+bNewPar = <polynomial> 
 ```
 
 The polynomial can be constructed using regular arithmetic involving the physical parameters of the theory. Irrational numbers (a/b) can be represented as `ir(a,b)`. 
 A trace function is available as `Tr()`. For the complex conjugate parameters, their beta-functions must be included as:
 
-```BetaFunc bNewParDagger = Conjugate(bNewPar);```
+```
+BetaFunc bNewParDagger = Conjugate(bNewPar);
+```
 
 Finally, the algorithm can be initiated by calling:
 
-```findInvariants(1loopBetaFuncs, 2loopBetaFuncs)```
+```
+findInvariants(1loopBetaFuncs, 2loopBetaFuncs)
+```
 
 If only one-loop beta-functions are available, it is possible to pass an empty vector as 2loopBetaFuncs as long as `bool INCLUDE_TWO_LOOP` is set to `false`. 
 

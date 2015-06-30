@@ -7,6 +7,16 @@ The results of the application of this code to the renormalization group equatio
 
 RGIsearch currently implements the beta-functions of the SM and the MSSM, but any set of beta-functions can be implemented. 
 
+#Contents
+The package contains:
+bin - The folder containing the binary files
+src - The folder containing the source files
+equations.cpp - The file where the renormalization group equations are defined
+settings.h - The file where some settings for the functionality of the algorithm can be adjusted
+makefile - the makefile
+RGIsearch.git - the folder storing the version history of the package
+
+
 #Compilation
 For first-time compilation, running 
 

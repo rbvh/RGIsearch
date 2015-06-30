@@ -9,11 +9,17 @@ RGIsearch currently implements the beta-functions of the SM and the MSSM, but an
 
 #Contents
 The package contains:
+
 bin - The folder containing the binary files
+
 src - The folder containing the source files
+
 equations.cpp - The file where the renormalization group equations are defined
+
 settings.h - The file where some settings for the functionality of the algorithm can be adjusted
+
 makefile - the makefile
+
 RGIsearch.git - the folder storing the version history of the package
 
 

@@ -487,5 +487,5 @@ void findInvariants(vector<BetaFunc> funcs_1, vector<BetaFunc> funcs_2)
 		uniqueInvariants = newInvariants;
 	}
 	cout << "Done" << endl;
-	for (unsigned long i=0; i<uniqueInvariants.size(); i++){uniqueInvariants[i].dimPrint(symbols, dims);}
+	for (unsigned long i=0; i<uniqueInvariants.size(); i++){uniqueInvariants[i].print(symbols);}
 }

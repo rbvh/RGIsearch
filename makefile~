@@ -28,5 +28,6 @@ bin/invariants.o: invariants.cpp common.h symbolics.h containers.h settings.h
 bin/equations.o: equations.cpp invariants.h common.h symbolics.h containers.h combinatorics.h matrix.h quadratic.h dimensions.h filtering.h 
 
 clean: 
+	@-rm -f bin/*.o 
 	@-rmdir bin 
 	@-rm -f RGIsearch

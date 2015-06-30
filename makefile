@@ -1,6 +1,6 @@
 OBJS = equations.o common.o symbolics.o containers.o combinatorics.o matrix.o linear.o quadratic.o dimensions.o filtering.o invariants.o
 CC = g++
-FLAGS = -std=c++0x
+FLAGS = -std=c++0x -g -O0
 
 vpath %.cpp src
 vpath %.h src

@@ -5,7 +5,7 @@ const int DIM_SEARCH_PARAMETER = 3;
 const int MAX_TERM = 2;
 const int FILTER_THRESHOLD = 5;
 
-const bool INCLUDE_TWO_LOOP = true;
+const bool INCLUDE_TWO_LOOP = false;
 const bool FACTORIZE = false;
 const bool REPORT = true;
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------

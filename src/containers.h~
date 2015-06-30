@@ -52,8 +52,8 @@ struct Equation
 struct container
 {
 //Container that stores the numerical form of Beta functions and invariants. Used throughout the program.
-	container() {}
-	container(const vector<int> &newDims) {dims = newDims;}
+	container(): {}
+	container(const vector<int> &newDims): {dims = newDims;}
 
 	void makeConstant(int dimSize);
 	void addTerm(long coeff, vector<Term> pows);

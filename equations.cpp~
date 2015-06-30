@@ -402,21 +402,21 @@ vector<BetaFunc> test_2;
 BetaFunc bx_1(x);
 BetaFunc bx_2(x);
 bx_1 = -4*x*y - 3*y*y;
-bx_2 = -1*x + 6*y;
+bx_2 = 6*y + 1*x;
 test_1.push_back(bx_1);
 test_2.push_back(bx_2);
 
 BetaFunc by_1(y);
 BetaFunc by_2(y);
 by_1 = -2*x*x + 1*z;
-by_2 = 3*x;
+by_2 = 2*x;
 test_1.push_back(by_1);
 test_2.push_back(by_2);
 
 BetaFunc bz_1(z);
 BetaFunc bz_2(z);
 bz_1 = 6*x*y*y + 4*y*z;
-bz_2 = -4*x*y - 3*y*y + 1*z;
+bz_2 = -4*x*y - 1*z;
 test_1.push_back(bz_1);
 test_2.push_back(bz_2);
 

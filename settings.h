@@ -7,5 +7,5 @@ const int FILTER_THRESHOLD = 5;
 
 const bool INCLUDE_TWO_LOOP = true;
 const bool FACTORIZE = false;
-const bool REPORT = true;
+const bool REPORT = false;
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -3,6 +3,7 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 #include "common.h"
 #include "containers.h"
+#include "../settings.h" 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------Matrix Element Methods-------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -305,29 +306,36 @@ void container::dimPrint(map<int8_t, string> symbols, vector<vector<int> > check
 
 		if (addPiFac == true && printedPiFac == false)
 		{
-			cout << " + (1/16pi²){" << Coefficients[i];
+			cout << " + (1/16pi²){";
+			if (Coefficients[i]==-1) {cout << "-" << endl;} 
+			if (Coefficients[i]!=1) {cout << Coefficients[i];}
 			printedPiFac = true;
 		}
 		
 		else if (i==0)
 		{
-			cout << Coefficients[0];
+			if (Coefficients[0]==-1) {cout << "-";}
+			else if (Coefficients[0]!=1) {cout << Coefficients[0];}
 		}
 		else
 		{
 			if (Coefficients[i]<0){cout << " - ";}
 			else {cout << " + ";}
-			cout << abs(Coefficients[i]);
+			if (abs(Coefficients[i])!=1){cout << abs(Coefficients[i]);}
 		}
 		for (unsigned long j=0; j<Powers[i].size(); j++)
 		{
-			cout << "(" << symbols[Powers[i][j].var] << ")^" << static_cast<int>(Powers[i][j].pow);
+			cout << symbols[Powers[i][j].var];
+			if (static_cast<int>(Powers[i][j].pow)!=1) {cout << "^" <<static_cast<int>(Powers[i][j].pow);}
 		}
 	}
 	if (printedPiFac == true){cout << "}";}
 	if (monoPows.size()>0) {cout << "]";}
-	cout << "  dims: ";
-	for (unsigned long i=0; i<dims.size(); i++) {cout << dims[i] << " ";}
+	if (REPORT)
+	{
+		cout << "  dims: ";
+		for (unsigned long i=0; i<dims.size(); i++) {cout << dims[i] << " ";}
+	}
 	cout << endl;
 	
 		

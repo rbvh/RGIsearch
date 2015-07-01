@@ -9,22 +9,28 @@ RGIsearch currently implements the beta-functions of the SM and the MSSM, but an
 
 #Contents
 The package contains:
-bin - The folder containing the binary files
+
+```bin``` - The folder containing the binary files
+
 src - The folder containing the source files
-equations.cpp - The file where the renormalization group equations are defined
+
+equations.cpp - The file where the renormalization group equations are defined. Currently contains the MSSM beta-functions up to two-loop level, the SM beta-functions up to one-loop level and the test system mentioned in the article
+
 settings.h - The file where some settings for the functionality of the algorithm can be adjusted
+
 makefile - the makefile
+
 RGIsearch.git - the folder storing the version history of the package
 
 
 #Compilation
-For first-time compilation, running 
+To compile, do: 
 
 ``` 
 make
 ```
 
-will generate all binary files and link them to an executable. This can then be run with
+This will generate all binary files and link them into an executable. This executable can then be run with:
 
 ``` 
 ./RGIsearch 
@@ -40,24 +46,27 @@ make
 #Program Settings
 The program settings can be found in `settings.h`.
 
+```const int DIM_SEARCH_PARAMETER```
+
+This constant controls the range of dimensionalities the algorithm searches. Depending on the dimensionalities that are found and the value of this constant, RGIsearch calculates 
+a suitable selection of dimensionality vectors to search through.
+
 ```const int MAX_TERM```
 
 This parameter controls the amount of different parameters allowed in a monomial term. For instance, if it is set to 2, terms like xy^2 can occur, but xyz is forbidden. 
-Increasing this parameter can have huge influence of the required computation times and memory.
+Increasing this parameter can have large influence of the required computation times and memory.
 
 ```const int FILTER_THRESHOLD```
 
-This parameter controls the filtering mechanism. While searching through the dimensionalities defined by the first two parameters, the algorithm might encounter invariants that are 
-products of previously found invariants. A filtering algorithm is implemented to avoid these products. If this parameter is set to a higher value, the filtering algorithm will perform 
-a more elaborate attempt to find all possible products of previously found invariants to compare against any newly found invariants. The default value should almost always be sufficient.
+This constant controls the filtering mechanism. If it is set to a higher value, the filtering algorithm will perform a more elaborate attempt to find all possible products of previously found invariants to compare against any newly found invariants. The default value should almost always be sufficient.
 
 ```bool INCLUDE_TWO_LOOP```
 
-Set to true to search for invariants at two-loop level. Set to false to search for invariants at one-loop level
+Set to true to search for invariants at two-loop level.
 
 ```bool FACTORIZE```
 
-Set to true to include the algorithm that searches for factorized polynomial invariants. Refer to the above sources for details on this algorithm. 
+Set to true to include the algorithm that searches for factorized polynomial invariants. 
 The code does not support factorization for two-loop level searches.
 
 ```bool REPORT```
@@ -73,7 +82,7 @@ To define the beta-functions of a theory, the physical parameters of the theory 
 Param newPar("parName", parSize);
 ```
 
-ParSize is the size of the parameter (single number, 2x2 matrix, 3x3 matrix etc..).
+ParSize is the size of the parameter (1 for a scalar, n for a nxn matrix).
 
 If a parameter is complex, its daggered counterpart must be defined. This is done with:
 
@@ -81,7 +90,7 @@ If a parameter is complex, its daggered counterpart must be defined. This is don
 Param newParDagger = dagger(newPar);
 ```
 
-Several methods are included in the Param class to allow for simplifications such as those required for going from the MSSM to the pMSSM. They include:
+The Param class has several methods that simplify matrix parameters. They include:
 1. `botRight()` Makes everything except for the bottom right component equal to zero.
 2. `diag()` Makes all offdiagonal terms equal to zero.
 3. `botRightDiag()` Makes all offdiagonal terms equal to zero, and the all components except for the bottom right degenerate.

@@ -130,7 +130,7 @@ void findLinear(const vector<container> &BetaFuncs_1, const vector<container> &B
 
 
 	vector<vector<MatEl> > M;
-	cout << "Reading" << endl;
+	if (REPORT) {cout << "Reading" << endl;}
 	readMat("Matrix.bin", M);									//Read the matrix from the file
 	for (unsigned long i=0; i<M.size(); i++){rowGCD(M[i]);}
 
@@ -447,7 +447,7 @@ void findInvariants(vector<BetaFunc> funcs_1, vector<BetaFunc> funcs_2)
 	//----------------------------------------------------------------------------------------------------------------------
 
 	long dimIndex=0;
-	cout << "Polynomial Searching" << endl;
+	if (REPORT) {cout << "Polynomial Searching" << endl;}
 	while(dimIndex < searchDims.size())								//First find all invariants without factorizing
 	{
 		findLinear(numericalBetaFuncs_1, numericalBetaFuncs_2, searchDims[dimIndex], dims, dimFactors, newInvariants, symbols);
@@ -465,7 +465,7 @@ void findInvariants(vector<BetaFunc> funcs_1, vector<BetaFunc> funcs_2)
 
 	if (FACTORIZE==true && INCLUDE_TWO_LOOP==false)
 	{
-		cout << "Factorized Polynomial Searching" << endl;
+		if (REPORT) {cout << "Factorized Polynomial Searching" << endl;}
 		dimIndex=0;
 		while(dimIndex < searchDims.size())
 		{
@@ -479,13 +479,13 @@ void findInvariants(vector<BetaFunc> funcs_1, vector<BetaFunc> funcs_2)
 
 	if (INCLUDE_TWO_LOOP==false)
 	{
-		cout << "Filtering" << endl;
+		if (REPORT) {cout << "Filtering" << endl;}
 		filterInvariants(uniqueInvariants, newInvariants, symbols, dims.size());
 	}
 	else
 	{
 		uniqueInvariants = newInvariants;
 	}
-	cout << "Done" << endl;
+	if (REPORT) {cout << "Done" << endl;}
 	for (unsigned long i=0; i<uniqueInvariants.size(); i++){uniqueInvariants[i].dimPrint(symbols, dims);}
 }

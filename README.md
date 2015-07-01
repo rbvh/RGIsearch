@@ -10,7 +10,7 @@ RGIsearch currently implements the beta-functions of the SM and the MSSM, but an
 #Contents
 The package contains:
 
-```bin``` - The folder containing the binary files
+```bin``` - The folder containing the binary files (after running make)
 
 ```src``` - The folder containing the source files
 
